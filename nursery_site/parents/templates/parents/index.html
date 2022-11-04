@@ -1,0 +1,18 @@
+{% extends 'parents/base.html' %}
+
+{% block title %}
+  Parents list
+{% endblock %}
+
+{% block body %}
+  <h1>Hello Parent Dogs!</h1>
+  <ul class="list-group">
+    {% for parent in parents %}
+    <li class="list-group-item">
+      <a href="{% url 'parents:details' parent.pk %}">
+        {{parent.name}} [{{parent.breed}}] ({{parent.color}})
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

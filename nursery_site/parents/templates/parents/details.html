@@ -1,0 +1,20 @@
+{% extends 'parents/base.html' %}
+
+{% block title %}
+  {{ parent.name }}
+{% endblock %}
+
+{% block body %}
+<h1>Parent dog <strong>{{ parent.name }}</strong></h1>
+<div class="list-group">
+  <p> Gender: {{ parent.gender }} </p>
+  <p> Breed: {{ parent.breed }} </p>
+  <p> Color: {{ parent.color }} </p>
+  <p> Birth: {{ parent.birth }} </p>
+  <p> Weight: {{ parent.weight }} </p>
+  <p> Height: {{ parent.height }} </p>
+</div>
+<div class="my-3" >
+  <a href="{% url 'parents:index' %}">Back to parent dogs list</a>
+</div>
+{% endblock %}
