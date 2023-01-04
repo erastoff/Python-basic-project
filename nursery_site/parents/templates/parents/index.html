@@ -1,4 +1,4 @@
-{% extends 'parents/base.html' %}
+{% extends 'root.html' %}
 
 {% block title %}
   Parents list
@@ -15,4 +15,9 @@
     </li>
     {% endfor %}
   </ul>
+  <div class="my-2">
+    <a class="btn btn-outline-info" href="{% url 'parents:create-parent' %}">
+    Create Parent dog
+    </a>
+  </div>
 {% endblock %}

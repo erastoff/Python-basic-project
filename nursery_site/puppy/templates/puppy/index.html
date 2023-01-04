@@ -1,0 +1,19 @@
+{% extends 'root.html' %}
+
+{% block title %}
+  Brood list
+{% endblock %}
+
+{% block body %}
+  <h1>Hello Broods!</h1>
+  <ul class="list-group">
+    {% for brood in broods %}
+    <li class="list-group-item">
+      <a href="{% url 'puppies:details' brood.pk %}">
+        {{brood.pk}} [{{brood.sire}}] - [{{brood.bitch}}]
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

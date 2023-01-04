@@ -22,7 +22,7 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("parents/", include("parents.urls")),
-    # path("puppy/", include="puppy.urls"),
+    path("puppies/", include("puppy.urls")),
     # path("<int:pk>/", ParentDetailView.as_view(), name="details"),
 ]
 
