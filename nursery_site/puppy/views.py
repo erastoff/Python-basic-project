@@ -1,7 +1,10 @@
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView
+from django.http import request
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy, reverse
+from django.views.generic import ListView, DetailView, CreateView
 
-from puppy.models import PuppyBrood
+from puppy.forms import BroodCreateForm, PuppyCreateForm
+from puppy.models import PuppyBrood, Puppy
 
 
 class BroodListView(ListView):
@@ -16,3 +19,18 @@ class BroodDetailView(DetailView):
     # model = Parent
     queryset = PuppyBrood.objects.select_related("sire", "bitch")
     # .prefetch_related('food')
+
+
+class BroodCreateView(CreateView):
+    model = PuppyBrood
+    form_class = BroodCreateForm
+    success_url = reverse_lazy("puppies:index")
+
+
+class PuppyCreateView(CreateView):
+    model = Puppy
+    form_class = PuppyCreateForm
+    success_url = reverse_lazy("puppies:add-puppy")
+
+    def get_success_url(self):
+        return reverse("puppies:add-puppy", kwargs={"brood_pk": self.object.brood.pk})

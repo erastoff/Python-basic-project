@@ -11,7 +11,12 @@
   <p> Sire: {{ brood.sire }} </p>
   <p> Bitch: {{ brood.bitch }} </p>
 </div>
-<div class="my-3" >
-  <a href="{% url 'puppies:index' %}">Back to parent dogs list</a>
+<div class="my-2">
+    <a class="btn btn-outline-info" href="{% url 'puppies:add-puppy' brood.pk %}">
+        Add puppies
+    </a>
+</div>
+<div class="my-3">
+  <a href="{% url 'puppies:index' %}">Back to broods list</a>
 </div>
 {% endblock %}

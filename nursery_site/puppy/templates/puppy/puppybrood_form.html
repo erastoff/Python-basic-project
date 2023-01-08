@@ -1,11 +1,11 @@
 {% extends 'root.html' %}
 
 {% block title %}
-  Create animal
+  Create puppy brood
 {% endblock %}
 
 {% block body %}
-<h1>Create Parent Dog</h1>
+<h1>Create Puppies' Brood</h1>
 
 <form method="post">
   {% csrf_token %}
@@ -16,6 +16,6 @@
 
 </form>
 <div class="my-3" >
-  <a href="{% url 'parents:index' %}">Back to parent dogs list</a>
+  <a href="{% url 'puppies:index' %}">Back to brood list</a>
 </div>
 {% endblock %}
