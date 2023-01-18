@@ -11,15 +11,17 @@ class ParentsListView(ListView):
     context_object_name = "parents"
     model = Parent
 
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context["help_text"] = "For your help!"
+        return context
+
 
 class ParentDetailView(DetailView):
     template_name = "parents/details.html"
     context_object_name = "parent"
-    # model = Parent
-    queryset = (
-        Parent.objects.select_related("breed", "color")
-        # .prefetch_related('food')
-    )
+    model = Parent
+    queryset = Parent.objects.select_related("breed", "color")
 
 
 class ParentCreateView(CreateView):
