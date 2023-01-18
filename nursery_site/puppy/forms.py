@@ -1,3 +1,4 @@
+from django import forms
 from django.forms import ModelForm, Widget
 
 from puppy.models import PuppyBrood, Puppy
@@ -35,6 +36,9 @@ class PuppyCreateForm(ModelForm):
             "brood",
             "description",
         )
+        # widgets = {
+        #     'brood': forms.HiddenInput(),
+        # }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

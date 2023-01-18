@@ -30,7 +30,21 @@ class BroodCreateView(CreateView):
 class PuppyCreateView(CreateView):
     model = Puppy
     form_class = PuppyCreateForm
-    success_url = reverse_lazy("puppies:add-puppy")
+    success_url = reverse_lazy("puppies:index")
+    # brood = get_object_or_404(PuppyBrood, pk=brood_pk)
 
-    def get_success_url(self):
-        return reverse("puppies:add-puppy", kwargs={"brood_pk": self.object.brood.pk})
+    # def get(self, request, *args, **kwargs):
+    #     self.brood_pk = kwargs['brood_pk']
+    #     # print(self.brood_pk)
+    #     return super().get(request, *args, **kwargs)
+    #
+    # def form_valid(self, form):
+    #     current_brood = PuppyBrood.object.get(pk=self.brood_pk)  # Этот pk мы сохранили в методе get
+    #     print(current_brood, "!!!!!!!!")
+    #     form.instance.brood = 1
+    #     return super().form_valid(form)
+    #
+    # def get_success_url(self):
+    #     print("BROOD PK:    ", self.object.brood.pk)
+    #     print("OBJECT:      ", self.object)
+    #     return reverse("puppies:add-puppy", kwargs={"brood_pk": self.object.brood.pk})
