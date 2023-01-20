@@ -1,17 +1,16 @@
 from datetime import datetime
 
 from django.test import TestCase
+
 from .models import Parent, ParentBreed, ParentGender, ParentColor
 
 
-# Create your tests here.
-class TestParent(TestCase):
+class TestParentBreed(TestCase):
     def setUp(self):
         self.breed = ParentBreed.objects.create(name="breed_test")
-        print("Run before each test")
 
     def tearDown(self):
-        print("Run after each test")
+        print("OK: ", self.__str__())
 
     def test_str(self):
         self.assertTrue(isinstance(self.breed.name, str))
@@ -22,33 +21,30 @@ class TestParent(TestCase):
         self.assertEqual(breed.name, "BREED")
 
 
-class TestAnimals(TestCase):
-    def test_str(self):
-        birth = datetime(2011, 11, 11, 23, 55, 59, 342380)
-        height = 0.5
-        weight = 2
-        breed = ParentBreed.objects.create(name="test_breed")
-        gender = ParentGender.objects.create(name="test_gender")
-        color = ParentColor.objects.create(name="test_color")
+class TestParents(TestCase):
+    def setUp(self):
+        self.birth = datetime(2011, 11, 11, 23, 55, 59, 342380)
+        self.height = 0.5
+        self.weight = 2
+        self.breed = ParentBreed.objects.create(name="test_breed")
+        self.gender = ParentGender.objects.create(name="test_gender")
+        self.color = ParentColor.objects.create(name="test_color")
 
-        animal = Parent.objects.create(
+        self.parent = Parent.objects.create(
             name="test_name",
-            birth=birth,
-            height=height,
-            weight=weight,
-            breed=breed,
-            gender=gender,
-            color=color,
+            birth=self.birth,
+            height=self.height,
+            weight=self.weight,
+            breed=self.breed,
+            gender=self.gender,
+            color=self.color,
         )
-        self.assertEqual(str(animal), "test_name")
 
+    def tearDown(self):
+        # print("Completed successfully!")
+        print("OK: ", self.__str__())
 
-# class TestProfile(TestCase):
-#     def test_phone_number_overflow(self):
-#         kind = AnimalKind.objects.create(name="bear")
-#         animal = Animal.objects.create(name="John", kind=kind, age=1)
-#         # print('MUST BE ERROR!')
-#         # with self.assertRaises(Exception):
-#         #     profile = AnimalProfile.objects.create(animal=animal, phone_number='12345678910')
-#         #     print(profile.phone_number)
-#         #     print(profile)
+    def test_str(self):
+        self.assertEqual(str(self.parent.name), "test_name")
+        self.assertEqual(str(self.parent.color), "test_color")
+        self.assertNotEqual(self.parent.birth, datetime(2000, 1, 1, 1, 1, 1, 11111))
