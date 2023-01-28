@@ -1,0 +1,22 @@
+{% extends 'root.html' %}
+
+{% block title %}
+  Brood #{{ brood.pk }}
+{% endblock %}
+
+{% block body %}
+<h1>Brood #<strong>{{ brood.pk }}</strong></h1>
+<div class="list-group">
+  <p> Date: {{ brood.date }} </p>
+  <p> Sire: {{ brood.sire }} </p>
+  <p> Bitch: {{ brood.bitch }} </p>
+</div>
+<div class="my-2">
+    <a class="btn btn-outline-info" href="{% url 'puppies:add-puppy' brood.pk %}">
+        Add puppies
+    </a>
+</div>
+<div class="my-3">
+  <a href="{% url 'puppies:index' %}">Back to broods list</a>
+</div>
+{% endblock %}

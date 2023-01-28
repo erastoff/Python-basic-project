@@ -17,10 +17,15 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 
+# from parents.views import ParentsListView, ParentDetailView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("parents/", include("parents.urls")),
+    path("puppies/", include("puppy.urls")),
+    # path("<int:pk>/", ParentDetailView.as_view(), name="details"),
 ]
+
 
 if settings.DEBUG:
     urlpatterns.append(

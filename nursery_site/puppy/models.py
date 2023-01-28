@@ -56,6 +56,9 @@ class PuppyBrood(models.Model):
         related_name="bitch",
     )
 
+    def __str__(self):
+        return f"{self.sire}&{self.bitch} ({self.pk})"
+
 
 class Puppy(models.Model):
     class Meta:
@@ -74,5 +77,4 @@ class Puppy(models.Model):
     brood = models.ForeignKey(
         PuppyBrood, on_delete=models.CASCADE, related_name="puppy", null=True
     )
-
     description = models.TextField(blank=True, null=False)
