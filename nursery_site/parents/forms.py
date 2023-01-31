@@ -1,6 +1,7 @@
-from django.forms import ModelForm, CharField, Widget
+from django.forms import ModelForm, Widget
 
 from parents.models import Parent
+from nursery_site.settings import DEBUG
 
 
 class ParentCreateForm(ModelForm):
@@ -23,6 +24,7 @@ class ParentCreateForm(ModelForm):
         super().__init__(*args, **kwargs)
 
         for name, field in self.fields.items():
-            # print(name, field, field.widget)
             widget: Widget = field.widget
             widget.attrs["class"] = "form-control"
+            if DEBUG:
+                print(name, field, field.widget)

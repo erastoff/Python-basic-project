@@ -1,7 +1,7 @@
-from django import forms
 from django.forms import ModelForm, Widget
 
 from puppy.models import PuppyBrood, Puppy
+from nursery_site.settings import DEBUG
 
 
 class BroodCreateForm(ModelForm):
@@ -19,8 +19,8 @@ class BroodCreateForm(ModelForm):
         for name, field in self.fields.items():
             widget: Widget = field.widget
             widget.attrs["class"] = "form-control"
-            # widget.attrs["aria - label"] = "Username"
-            # widget.attrs["aria - describedby"] = "basic-addon1"
+            if DEBUG:
+                print(name, field, field.widget)
 
 
 class PuppyCreateForm(ModelForm):
@@ -44,6 +44,7 @@ class PuppyCreateForm(ModelForm):
         super().__init__(*args, **kwargs)
 
         for name, field in self.fields.items():
-            # print(name, field, field.widget)
             widget: Widget = field.widget
             widget.attrs["class"] = "form-control"
+            if DEBUG:
+                print(name, field, field.widget)
