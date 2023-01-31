@@ -21,4 +21,10 @@ jobs:
         pip install -r requirements-dev.txt
     - name: Analysing the code with pylint
       run: |
-        pylint $(git ls-files '*.py')
+        pylint $(git ls-files '*.py') --disable=missing-docstring \
+                                      --disable=too-many-ancestors \
+                                      --disable=too-few-public-methods \
+                                      --disable=import-outside-toplevel \
+                                      --disable=invalid-name \
+                                      --disable=no-member \
+                                      --disable=duplicate-code

@@ -10,7 +10,7 @@ class TestParentBreed(TestCase):
         self.breed = ParentBreed.objects.create(name="breed_test")
 
     def tearDown(self):
-        print("OK: ", self.__str__())
+        print("OK: ", str(self))
 
     def test_str(self):
         self.assertTrue(isinstance(self.breed.name, str))
@@ -42,7 +42,7 @@ class TestParents(TestCase):
 
     def tearDown(self):
         # print("Completed successfully!")
-        print("OK: ", self.__str__())
+        print("OK: ", str(self))
 
     def test_str(self):
         self.assertEqual(str(self.parent.name), "test_name")

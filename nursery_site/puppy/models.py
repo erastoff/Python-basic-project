@@ -1,5 +1,5 @@
 from django.db import models
-from parents.models import Parent as Parent
+from parents.models import Parent
 
 
 class PuppyGender(models.Model):
@@ -10,7 +10,7 @@ class PuppyGender(models.Model):
     description = models.TextField(blank=True, null=False)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class PuppyStatus(models.Model):
@@ -21,7 +21,7 @@ class PuppyStatus(models.Model):
     description = models.TextField(blank=True, null=False)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class PuppyBreed(models.Model):
@@ -30,7 +30,7 @@ class PuppyBreed(models.Model):
     color = models.ManyToManyField("PuppyColor", related_name="breed")
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class PuppyColor(models.Model):
@@ -38,7 +38,7 @@ class PuppyColor(models.Model):
     description = models.TextField(blank=True, null=False)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class PuppyBrood(models.Model):

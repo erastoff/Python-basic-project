@@ -24,7 +24,7 @@ class ParentListView(TestCase):
         )
 
     def tearDown(self):
-        print("OK: ", self.__str__())
+        print("OK: ", (self))
 
     def test_response_status_code(self):
         response = self.client.get("/parents/")

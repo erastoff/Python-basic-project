@@ -1,6 +1,4 @@
-from django.http import request
-from django.shortcuts import render, get_object_or_404
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 
 from puppy.forms import BroodCreateForm, PuppyCreateForm
@@ -39,7 +37,8 @@ class PuppyCreateView(CreateView):
     #     return super().get(request, *args, **kwargs)
     #
     # def form_valid(self, form):
-    #     current_brood = PuppyBrood.object.get(pk=self.brood_pk)  # Этот pk мы сохранили в методе get
+    #     current_brood = PuppyBrood.object.get(pk=self.brood_pk)
+    # Этот pk мы сохранили в методе get
     #     print(current_brood, "!!!!!!!!")
     #     form.instance.brood = 1
     #     return super().form_valid(form)

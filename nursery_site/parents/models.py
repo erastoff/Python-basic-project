@@ -6,7 +6,7 @@ class ParentBreed(models.Model):
     description = models.TextField(blank=True, null=False)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class ParentGender(models.Model):
@@ -14,7 +14,7 @@ class ParentGender(models.Model):
     description = models.TextField(blank=True, null=False)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class ParentColor(models.Model):
@@ -22,7 +22,7 @@ class ParentColor(models.Model):
     description = models.TextField(blank=True, null=False)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class Parent(models.Model):
@@ -43,7 +43,7 @@ class Parent(models.Model):
     )
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 
 class ParentKennel(models.Model):
@@ -52,4 +52,4 @@ class ParentKennel(models.Model):
     description = models.TextField(blank=True, null=False)
 
     def __str__(self):
-        return f"Dog #{self.dog.pk} from {self.number} kennel"
+        return f"Dog #{self.dog.name} from {self.number} kennel"
