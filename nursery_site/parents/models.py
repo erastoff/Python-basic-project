@@ -41,6 +41,7 @@ class Parent(models.Model):
     color = models.ForeignKey(
         ParentColor, on_delete=models.PROTECT, related_name="parent", null=True
     )
+    archived = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.name)

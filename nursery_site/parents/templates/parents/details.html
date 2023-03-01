@@ -14,6 +14,13 @@
   <p> Weight: {{ parent.weight }} </p>
   <p> Height: {{ parent.height }} </p>
 </div>
+{% if user.is_superuser %}
+<div class="my-3">
+  <a class="btn btn-outline-warning" href="{% url 'parents:delete' parent.pk %}">
+    Archive dog
+  </a>
+</div>
+{% endif %}
 <div class="my-3" >
   <a href="{% url 'parents:index' %}">Back to parent dogs list</a>
 </div>
