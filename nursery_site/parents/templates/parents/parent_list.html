@@ -1,0 +1,25 @@
+{% extends 'root.html' %}
+
+{% block title %}
+  Parents by breed list
+{% endblock %}
+
+{% block body %}
+  <h1>Hello Parent {{ parent_breed }}!</h1>
+  <ul class="list-group">
+    {% for breed in object_list %}
+    <li class="list-group-item">
+      <a href="{% url 'parents:breed_parents' breed.pk %}">
+        {{breed}}
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+<div class="my-2">
+  <a href="{% url 'parents:breeds' %}">
+    Back to parent's breeds</a>
+</div>
+<div class="my-3" >
+  <a href="{% url 'parents:index' %}">Back to parent dogs list</a>
+</div>
+{% endblock %}

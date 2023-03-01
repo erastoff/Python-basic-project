@@ -1,0 +1,21 @@
+{% extends 'root.html' %}
+
+{% block title %}
+  Delete parent {{ parent.name }}
+{% endblock %}
+
+{% block body %}
+<h1>Delete parent</h1>
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete dog "{{ parent.name }}"?</p>
+    {{ form }}
+    <a class="btn btn-secondary" href="{% url 'parents:details' parent.pk %}">
+        Back to parents list
+    </a>
+    <button class="btn btn-warning" type="submit">
+        Archive
+    </button>
+</form>
+{% endblock %}
+
+
