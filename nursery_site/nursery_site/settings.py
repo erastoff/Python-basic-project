@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # my
     "parents.apps.ParentsConfig",
     "puppy.apps.PuppyConfig",
+    "users.apps.UsersConfig",
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,8 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# AUTH
+LOGIN_REDIRECT_URL = "/parents/"
+LOGIN_URL = "/users/login/"
+LOGOUT_REDIRECT_URL = "/parents/"
