@@ -11,11 +11,19 @@
   <p> Sire: {{ brood.sire }} </p>
   <p> Bitch: {{ brood.bitch }} </p>
 </div>
+<div>
+    <h3>Puppies from brood#{{ brood.pk }}</h3>
+    {% for puppy in brood.puppy.all %}
+        <li> {{ puppy }} </li>
+    {% endfor %}
+</div>
+{% if user.is_superuser %}
 <div class="my-2">
     <a class="btn btn-outline-info" href="{% url 'puppies:add-puppy' brood.pk %}">
         Add puppies
     </a>
 </div>
+{% endif %}
 <div class="my-3">
   <a href="{% url 'puppies:index' %}">Back to broods list</a>
 </div>

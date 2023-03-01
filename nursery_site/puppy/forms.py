@@ -1,4 +1,4 @@
-from django.forms import ModelForm, Widget
+from django.forms import ModelForm, Widget, widgets
 
 from puppy.models import PuppyBrood, Puppy
 from nursery_site.settings import DEBUG
@@ -19,8 +19,17 @@ class BroodCreateForm(ModelForm):
         for name, field in self.fields.items():
             widget: Widget = field.widget
             widget.attrs["class"] = "form-control"
-            if DEBUG:
-                print(name, field, field.widget)
+            if name == "date":
+                self.fields["date"].widget = widgets.DateInput(
+                    attrs={
+                        "type": "date",
+                        "placeholder": "yyyy-mm-dd (DOB)",
+                        "class": "form-control",
+                    }
+                )
+
+            # if DEBUG:
+            #     print(name, field, field.widget)
 
 
 class PuppyCreateForm(ModelForm):
@@ -46,5 +55,13 @@ class PuppyCreateForm(ModelForm):
         for name, field in self.fields.items():
             widget: Widget = field.widget
             widget.attrs["class"] = "form-control"
-            if DEBUG:
-                print(name, field, field.widget)
+            if name == "birth":
+                self.fields["birth"].widget = widgets.DateInput(
+                    attrs={
+                        "type": "date",
+                        "placeholder": "yyyy-mm-dd (DOB)",
+                        "class": "form-control",
+                    }
+                )
+            # if name == 'brood':
+            #     self.fields['brood'].widget = widgets.HiddenInput()

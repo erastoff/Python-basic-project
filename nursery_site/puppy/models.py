@@ -78,3 +78,6 @@ class Puppy(models.Model):
         PuppyBrood, on_delete=models.CASCADE, related_name="puppy", null=True
     )
     description = models.TextField(blank=True, null=False)
+
+    def __str__(self):
+        return str(self.name)

@@ -1,4 +1,4 @@
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView
 
 from puppy.forms import BroodCreateForm, PuppyCreateForm
@@ -9,14 +9,16 @@ class BroodListView(ListView):
     template_name = "puppy/index.html"
     context_object_name = "broods"
     model = PuppyBrood
+    queryset = PuppyBrood.objects.select_related("sire", "bitch")
 
 
 class BroodDetailView(DetailView):
     template_name = "puppy/details.html"
     context_object_name = "brood"
     # model = Parent
-    queryset = PuppyBrood.objects.select_related("sire", "bitch")
-    # .prefetch_related('food')
+    queryset = PuppyBrood.objects.select_related("sire", "bitch").prefetch_related(
+        "puppy"
+    )
 
 
 class BroodCreateView(CreateView):
@@ -33,14 +35,14 @@ class PuppyCreateView(CreateView):
 
     # def get(self, request, *args, **kwargs):
     #     self.brood_pk = kwargs['brood_pk']
-    #     # print(self.brood_pk)
+    #     print("BROOD PK", self.brood_pk)
     #     return super().get(request, *args, **kwargs)
     #
     # def form_valid(self, form):
     #     current_brood = PuppyBrood.object.get(pk=self.brood_pk)
-    # Этот pk мы сохранили в методе get
+    #     # Этот pk мы сохранили в методе get
     #     print(current_brood, "!!!!!!!!")
-    #     form.instance.brood = 1
+    #     form.instance.brood = current_brood
     #     return super().form_valid(form)
     #
     # def get_success_url(self):
