@@ -17,12 +17,16 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 
+from .views import index
+
 # from parents.views import ParentsListView, ParentDetailView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("parents/", include("parents.urls")),
     path("puppies/", include("puppy.urls")),
+    path("users/", include("users.urls")),
+    path("main/", index, name="main"),
     # path("<int:pk>/", ParentDetailView.as_view(), name="details"),
 ]
 
