@@ -1,0 +1,25 @@
+{% extends 'root.html' %}
+
+{% block title %}
+  Main page
+{% endblock %}
+
+{% block body %}
+    <h2>BODY</h2>
+<br>
+<code>TEST: {{ request.path }}</code>
+<br>
+        {% for endpoint, label in active_cont %}
+            <li> {{ endpoint }} - {{ label }} </li>
+            {% url endpoint as path %}
+             PATH: {{ path }}
+        {% endfor %}
+{#    {% for endpoint, label in [       #}
+{#        ('parents:index', 'DOGS'),    #}
+{#        ('puppies:index', 'PUPPIES')  #}
+{#        ] %}                          #}
+{#        {% with endpoint as path %}   #}
+{#            <li> {{path}} </li>       #}
+{#        {% endwith %}                 #}
+{#    {% endfor %}                      #}
+{% endblock %}
