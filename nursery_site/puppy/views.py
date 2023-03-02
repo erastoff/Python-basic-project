@@ -1,4 +1,5 @@
-from django.urls import reverse_lazy, reverse
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 
 from puppy.forms import BroodCreateForm, PuppyCreateForm
@@ -21,14 +22,16 @@ class BroodDetailView(DetailView):
     )
 
 
-class BroodCreateView(CreateView):
+class BroodCreateView(PermissionRequiredMixin, CreateView):
     model = PuppyBrood
+    permission_required = "puppies.brood.create_brood"
     form_class = BroodCreateForm
     success_url = reverse_lazy("puppies:index")
 
 
-class PuppyCreateView(CreateView):
+class PuppyCreateView(PermissionRequiredMixin, CreateView):
     model = Puppy
+    permission_required = "puppies.create_puppy"
     form_class = PuppyCreateForm
     success_url = reverse_lazy("puppies:index")
     # brood = get_object_or_404(PuppyBrood, pk=brood_pk)

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-  <h1>Hello Broods!</h1>
+  <h1>Available Broods:</h1>
   <ul class="list-group">
     {% for brood in broods %}
     <li class="list-group-item">
@@ -15,10 +15,11 @@
     </li>
     {% endfor %}
   </ul>
-
+{% if user.is_superuser %}
   <div class="my-2">
     <a class="btn btn-outline-info" href="{% url 'puppies:create-brood' %}">
     Create Brood
     </a>
   </div>
+{% endif %}
 {% endblock %}

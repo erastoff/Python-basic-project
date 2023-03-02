@@ -1,16 +1,16 @@
 {% extends 'root.html' %}
 
 {% block title %}
-  Parents by breed list
+  {{ p_breed }}
 {% endblock %}
 
 {% block body %}
-  <h1>Hello Parent {{ parent_breed }}!</h1>
+  <h1>Dogs Breed {{ p_breed }}:</h1>
   <ul class="list-group">
-    {% for breed in object_list %}
+    {% for dog in object_list %}
     <li class="list-group-item">
-      <a href="{% url 'parents:breed_parents' breed.pk %}">
-        {{breed}}
+      <a href="{% url 'parents:breed_parents' dog.pk %}">
+        {{ dog }}
       </a>
     </li>
     {% endfor %}

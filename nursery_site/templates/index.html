@@ -1,25 +1,21 @@
 {% extends 'root.html' %}
 
 {% block title %}
-  Main page
+  Nursery site!
 {% endblock %}
 
 {% block body %}
-    <h2>BODY</h2>
+<center>
+    <h1>Hello, {% firstof user.username 'Guest' %}</h1>
 <br>
-<code>TEST: {{ request.path }}</code>
+This is the site of the nursery, you can have your favorite pet!
 <br>
-        {% for endpoint, label in active_cont %}
-            <li> {{ endpoint }} - {{ label }} </li>
-            {% url endpoint as path %}
-             PATH: {{ path }}
-        {% endfor %}
-{#    {% for endpoint, label in [       #}
-{#        ('parents:index', 'DOGS'),    #}
-{#        ('puppies:index', 'PUPPIES')  #}
-{#        ] %}                          #}
-{#        {% with endpoint as path %}   #}
-{#            <li> {{path}} </li>       #}
-{#        {% endwith %}                 #}
-{#    {% endfor %}                      #}
+  <a href="{% url 'parents:index' %}">Here</a> you can familiarize yourself with our dogs!
+   <br>
+    <a href="{% url 'parents:breeds' %}">The list of breeds</a> will tell you which ones are currently available.
+    <br>
+     <a href="{% url 'puppies:index' %}">The page with available broods</a> will show which puppies are available for purchase.
+    <br><br>
+    <h2>Enjoy!</h2>
+</center>
 {% endblock %}

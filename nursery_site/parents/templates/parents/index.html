@@ -1,11 +1,11 @@
 {% extends 'root.html' %}
 
 {% block title %}
-  Parents list
+  Parent Dogs
 {% endblock %}
 
 {% block body %}
-  <h1>Hello Parent Dogs!</h1>
+  <h1>Current Parent Dogs List:</h1>
   <ul class="list-group">
     {% for parent in parents %}
     <li class="list-group-item">
@@ -18,7 +18,7 @@
 {% if user.is_superuser %}
   <div class="my-2">
     <a class="btn btn-outline-info" href="{% url 'parents:create-parent' %}">
-    Create Parent dog
+    Create Parent Dog
     </a>
   </div>
 {% endif %}

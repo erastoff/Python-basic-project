@@ -1,7 +1,6 @@
 from django.forms import ModelForm, Widget, widgets
 
 from puppy.models import PuppyBrood, Puppy
-from nursery_site.settings import DEBUG
 
 
 class BroodCreateForm(ModelForm):

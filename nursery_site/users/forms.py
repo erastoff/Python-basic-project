@@ -17,8 +17,8 @@ class RegistrationForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        for name, field in self.fields.items():
-            widget: Widget = field.widget
+        for field in self.fields.items():
+            widget: Widget = field[1].widget
             widget.attrs["class"] = "form-control"
 
 
@@ -33,6 +33,6 @@ class UserAuthenticationForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        for name, field in self.fields.items():
-            widget: Widget = field.widget
+        for field in self.fields.items():
+            widget: Widget = field[1].widget
             widget.attrs["class"] = "form-control"

@@ -25,7 +25,7 @@ class ParentsListView(ListView):
         return context
 
 
-class AnimalKindListView(ListView):
+class ParentsBreedList(ListView):
     model = ParentBreed
 
 
@@ -36,38 +36,28 @@ class ParentsByBreedList(ListView):
         qs = super().get_queryset()
         breed_name = self.kwargs["parent_breed"]
         breed: ParentBreed = get_object_or_404(ParentBreed, name=breed_name)
-        # return qs.filter(kind__name=kind_name)
         return qs.filter(breed=breed)
+
+    def get_context_data(self, **kwargs):
+        context = super(ParentsByBreedList, self).get_context_data(**kwargs)
+        if context["object_list"]:
+            context["p_breed"] = context["object_list"][0].breed
+        else:
+            context["p_breed"] = None
+        return context
 
 
 class ParentDetailView(DetailView):
     template_name = "parents/details.html"
     context_object_name = "parent"
     model = Parent
-    # queryset = Parent.objects.select_related("breed", "color")
 
 
-class ParentCreateView(CreateView):
+class ParentCreateView(PermissionRequiredMixin, CreateView):
     model = Parent
+    permission_required = "puppies.create_brood"
     form_class = ParentCreateForm
     success_url = reverse_lazy("parents:index")
-
-    # def post(self, request, *args, **kwargs):
-    #     get_request_info.delay(url=request.path, method=request.method)
-    #     return super().post(request, *args, **kwargs)
-    #
-    # def get(self, request, *args, **kwargs):
-    #     get_request_info.delay(url=request.path, method=request.method)
-    #     return super().get(request, *args, **kwargs)
-    #
-    # def test_func(self):
-    #     return self.request.user.is_staff or self.request.user.is_superuser
-    #
-    # def get_success_url(self):
-    #     task = notify.delay(self.object.name, self.object.kind.name)
-    #     print("ID", task.id)
-    #     get_request_info.delay(url="TEST", method="TEST")
-    #     return reverse("animals:details", kwargs={"pk": self.object.pk})
 
 
 class ParentDeleteView(PermissionRequiredMixin, DeleteView):

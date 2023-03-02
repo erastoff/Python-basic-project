@@ -5,17 +5,17 @@
 {% endblock %}
 
 {% block body %}
-  <h1>Parents breeds:</h1>
+  <h1>Parents Breeds:</h1>
     <div class="row">
       <div class="col col-lg-9">
       <ul class="list-group">
         {% for parent_breed in object_list %}
         <li class="list-group-item">
-        <strong>
+        <div>
           <a href="{% url 'parents:breed_parents' parent_breed.name %}">
           {{ parent_breed.name }}
             </a>
-        </strong>
+        </div>
             <span>
             {{ parent_breed.description }}
             </span>
@@ -23,4 +23,7 @@
         {% endfor %}
       </ul>
     </div>
+      <div class="my-3" >
+  <a href="{% url 'parents:index' %}">Back to parent dogs list</a>
+</div>
 {% endblock %}

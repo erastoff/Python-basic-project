@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, DetailView, TemplateView
+from django.views.generic import CreateView, TemplateView
 
 from users.forms import RegistrationForm, UserAuthenticationForm
 
