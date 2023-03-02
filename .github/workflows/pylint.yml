@@ -27,4 +27,5 @@ jobs:
                                       --disable=import-outside-toplevel \
                                       --disable=invalid-name \
                                       --disable=no-member \
-                                      --disable=duplicate-code
+                                      --disable=duplicate-code \
+                                      --disable=super-with-arguments
